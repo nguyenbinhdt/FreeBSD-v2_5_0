@@ -1,0 +1,141 @@
+#
+# uFW -- Custom configuration for the microFirewall kit, check out
+# https://netgate.com/products/sg-1000.html
+#
+# For more information on this file, please read the config(5) manual page,
+# and/or the handbook section on Kernel Configuration Files:
+#
+#    http://www.FreeBSD.org/doc/en_US.ISO8859-1/books/handbook/kernelconfig-config.html
+#
+# The handbook is also available locally in /usr/share/doc/handbook
+# if you've installed the doc distribution, otherwise always see the
+# FreeBSD World Wide Web server (http://www.FreeBSD.org/) for the
+# latest information.
+#
+# An exhaustive list of options and more detailed explanations of the
+# device lines is also present in the ../../conf/NOTES and NOTES files.
+# If you are in doubt as to the purpose or necessity of a line, check first
+# in NOTES.
+#
+# $FreeBSD$
+
+ident		uFW
+
+include 	"std.armv6"
+include 	"../ti/am335x/std.am335x"
+
+makeoptions	MODULES_EXTRA="dtb/am335x am335x_dmtpps"
+
+options 	INTRNG
+
+options 	SCHED_4BSD		# 4BSD scheduler
+options 	PLATFORM
+
+# MMC/SD/SDIO Card slot support
+device		mmc			# mmc/sd bus
+device		mmcsd			# mmc/sd flash cards
+device		sdhci			# mmc/sd host controller
+
+# I2C support
+device		iicbus
+device		iic
+device		ti_i2c
+
+# eeprom
+device		icee
+
+#define 	am335x_dmtpps		# Pulse Per Second capture driver
+
+# Console and misc
+device		uart
+device		uart_ns8250
+device		pty
+device		snp
+
+# GPIO
+device		gpio
+#device		gpioled
+
+# ADC support
+device		ti_adc
+
+# Watchdog support
+# If we don't enable the watchdog driver, the system could potentially
+# reboot automatically because the boot loader might have enabled the
+# watchdog.
+device		ti_wdt
+
+# Mailbox support
+device		ti_mbox
+
+# PMU support (for CCNT).
+device		pmu
+
+# Wireless NIC cards                    
+device		wlan			# 802.11 support
+options 	IEEE80211_DEBUG		# enable debug msgs
+options 	IEEE80211_AMPDU_AGE	# age frames in AMPDU reorder q's
+options 	IEEE80211_SUPPORT_MESH	# enable 802.11s draft support
+device		wlan_wep		# 802.11 WEP support
+device		wlan_ccmp		# 802.11 CCMP support
+device		wlan_tkip		# 802.11 TKIP support
+device		wlan_amrr		# AMRR transmit rate control algorithm
+device		an			# Aironet 4500/4800 802.11 wireless NICs.
+device		ath			# Atheros NICs
+device		ath_pci			# Atheros pci/cardbus glue
+device		ath_hal			# pci/cardbus chip support
+options 	AH_SUPPORT_AR5416	# enable AR5416 tx/rx descriptors
+options 	AH_AR5416_INTERRUPT_MITIGATION	# AR5416 interrupt mitigation
+options 	ATH_ENABLE_11N		# Enable 802.11n support for AR5416 and later
+device		ath_rate_sample		# SampleRate tx rate control for ath
+#device		bwi			# Broadcom BCM430x/BCM431x wireless NICs.
+#device		bwn			# Broadcom BCM43xx wireless NICs.
+device		ipw			# Intel 2100 wireless NICs.
+device		iwi			# Intel 2200BG/2225BG/2915ABG wireless NICs.
+device		iwn			# Intel 4965/1000/5000/6000 wireless NICs.
+device		malo			# Marvell Libertas wireless NICs.
+device		mwl			# Marvell 88W8363 802.11n wireless NICs.
+device		ral			# Ralink Technology RT2500 wireless NICs. 
+device		wi			# WaveLAN/Intersil/Symbol 802.11 wireless NICs.
+device		wpi			# Intel 3945ABG wireless NICs.
+
+# Pseudo devices.
+device		loop			# Network loopback
+device		random			# Entropy device
+device		ether			# Ethernet support
+device		vlan			# 802.1Q VLAN support
+device		tun			# Packet tunnel.
+device		md			# Memory "disks"
+device		gif			# IPv6 and IPv4 tunneling
+device		firmware		# firmware assist module
+
+# USB support
+device		usb
+options 	USB_HOST_ALIGN=64	# Align usb buffers to cache line size.
+device		musb
+device		umass
+device		scbus			# SCSI bus (required for ATA/SCSI)
+device		da			# Direct Access (disks)
+
+# USB ethernet support, requires miibus
+device		miibus
+
+# Ethernet
+device		micphy
+device		cpsw
+options 	CPSW_ETHERSWITCH
+device		etherswitch
+device		bpf
+
+# Netmap provides direct access to TX/RX rings on supported NICs
+#device		netmap			# netmap(4) support
+
+# Device mode support and USFS template
+#device		usb_template    	# Control of the gadget
+#device		usfs
+
+# Pinmux
+device		fdt_pinctrl
+
+# Flattened Device Tree
+options 	FDT			# Configure using FDT/DTB data

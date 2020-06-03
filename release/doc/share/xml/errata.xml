@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!--
+     The FreeBSD Documentation Project
+
+     $FreeBSD$
+-->
+<informaltable frame="none" pgwide="1">
+  <tgroup cols="3">
+    <colspec colwidth="40%"/>
+    <colspec colwidth="30%"/>
+    <colspec colwidth="30%"/>
+    <thead>
+      <row>
+	<entry>Errata</entry>
+	<entry>Date</entry>
+	<entry>Topic</entry>
+      </row>
+    </thead>
+
+    <tbody>
+      <row>
+	<entry><link
+	    xlink:href="&security.url;/FreeBSD-EN-19:13.mds.asc">FreeBSD-EN-19:13.mds</link></entry>
+	<entry>24&nbsp;July&nbsp;2019</entry>
+	<entry><para>System crash from Intel CPU vulnerability
+	    mitigation</para></entry>
+      </row>
+
+      <row>
+	<entry><link
+	    xlink:href="&security.url;/FreeBSD-EN-19:15.libunwind.asc">FreeBSD-EN-19:15.libunwind</link></entry>
+	<entry>6&nbsp;August&nbsp;2019</entry>
+	<entry><para>Incorrect exception handling</para></entry>
+      </row>
+
+      <row>
+	<entry><link
+	    xlink:href="&security.url;/FreeBSD-EN-19:16.bhyve.asc">FreeBSD-EN-19:16.bhyve</link></entry>
+	<entry>20&nbsp;August&nbsp;2019</entry>
+	<entry><para>Instruction emulation improvements</para></entry>
+      </row>
+
+      <row>
+	<entry><link
+	    xlink:href="&security.url;/FreeBSD-EN-19:17.ipfw.asc">FreeBSD-EN-19:17.ipfw</link></entry>
+	<entry>20&nbsp;August&nbsp;2019</entry>
+	<entry><para>&quot;jail&quot; keyword fix</para></entry>
+      </row>
+
+      <row>
+	<entry><link
+	    xlink:href="&security.url;/FreeBSD-EN-19:18.tzdata.asc">FreeBSD-EN-19:18.tzdata</link></entry>
+	<entry>23&nbsp;October&nbsp;2019</entry>
+	<entry><para>Timezone database information
+	    update</para></entry>
+      </row>
+    </tbody>
+  </tgroup>
+</informaltable>
